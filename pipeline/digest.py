@@ -17,6 +17,7 @@ import json
 import os
 import re
 import sys
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -115,11 +116,15 @@ def list_rss(url: str, limit: int) -> list[dict]:
 PLAYLIST = re.compile(r"list=([A-Za-z0-9_-]{13,})")
 
 
-def list_course_page(url: str) -> list[dict]:
+SLIDES = re.compile(r"href=[\"']([^\"']*(?:slides?|lecture)[^\"']*\\.pdf)[\"']", re.I)
+
+
+def list_course_page(url: str, slides: bool = False) -> list[dict]:
     """All YouTube videos linked from a course page, in page (i.e. lecture) order.
 
     Playlists linked from the page are expanded in place. Login-only hosts
-    (Panopto, Canvas) can't be read and are ignored.
+    (Panopto, Canvas) can't be read and are ignored. With slides=True, lecture
+    slide PDFs are collected too (for courses that post slides but no video).
     """
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 learning-digest/1.0"})
     with urllib.request.urlopen(req, timeout=30) as r:
@@ -139,6 +144,12 @@ def list_course_page(url: str) -> list[dict]:
             if e["id"] not in seen:
                 seen.add(e["id"])
                 out.append({**e, "channel": title})
+    if slides:
+        for m in SLIDES.finditer(html):
+            link = urllib.parse.urljoin(url, m.group(1).replace("&amp;", "&"))
+            if link not in seen:
+                seen.add(link)
+                out.append({"id": link, "url": link, "title": Path(link).stem, "channel": title, "kind": "slides"})
     return out
 
 
@@ -162,7 +173,7 @@ def cmd_discover(args) -> None:
             elif kind == "rss":
                 entries = list_rss(url, scan)
             elif kind == "course_page":
-                entries = list_course_page(url)
+                entries = list_course_page(url, slides=bool(src.get("slides")))
             else:
                 raise ValueError(f"unknown source type {kind!r}")
         except Exception as e:  # one broken source must not stop the run
@@ -255,13 +266,38 @@ def parse_vtt(text: str) -> list[tuple[float, str]]:
     return segs
 
 
+def slides_text(url: str, out: Path) -> None:
+    """Slide deck (PDF) -> per-slide text, so lessons can cite [slide N]."""
+    from pypdf import PdfReader
+
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 learning-digest/1.0"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        (out / "slides.pdf").write_bytes(r.read())
+    reader = PdfReader(out / "slides.pdf")
+    pages = [f"[slide {i}] " + re.sub(r"[ \t]+", " ", (pg.extract_text() or "").strip()) for i, pg in enumerate(reader.pages, 1)]
+    meta = {"id": url, "title": Path(url).stem, "webpage_url": url, "kind": "slides", "pages": len(pages)}
+    (out / "meta.json").write_text(json.dumps(meta, indent=2))
+    (out / "transcript.md").write_text(
+        f"# {meta['title']}\n\nurl: {url}\nkind: slides ({len(pages)} slides; no audio, cite [slide N])\n\n"
+        "## Slides\n" + "\n\n".join(pages) + "\n")
+
+
 def cmd_transcript(args) -> None:
     import yt_dlp
 
     url = args.video if args.video.startswith("http") else f"https://www.youtube.com/watch?v={args.video}"
     vid = video_key(url)
-    out = WORK / re.sub(r"[^A-Za-z0-9_-]", "_", vid)[:80]
+    out = WORK / re.sub(r"[^A-Za-z0-9_-]", "_", vid)[-80:]
     out.mkdir(parents=True, exist_ok=True)
+
+    if url.lower().split("?")[0].endswith(".pdf"):
+        try:
+            slides_text(url, out)
+        except OSError as e:  # URLError is an OSError
+            sys.exit(f"slides fetch failed for {url}: {e}"
+                     + ("\nHint: the network policy blocks this host." if "403" in str(e) else ""))
+        print(out / "transcript.md")
+        return
 
     if args.from_file:  # manual fallback: a pasted transcript, when the site can't be reached
         text = Path(args.from_file).read_text()

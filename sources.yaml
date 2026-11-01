@@ -6,6 +6,7 @@
 #   video            - one specific video (processed once)
 #   course_page      - a course website; every YouTube video/playlist it links is taken in page order,
 #                      starting from lecture 1 (max_per_run lectures per day). Re-scanned daily for new uploads.
+#                      Add `slides: true` to also take lecture slide PDFs (for courses without video).
 #
 # max_per_run caps how many new videos one daily run processes (the rest wait for the next day).
 # initial_backfill: on the first scan of a channel/playlist/feed, queue only its newest N videos
@@ -25,7 +26,8 @@ sources:
     name: MIT 6.5940 (Fall 2026)
   - type: course_page
     url: https://cs329z.stanford.edu/
-    name: Stanford CS329Z
+    name: Stanford CS329Z (Engineering AI Agents)
+    slides: true   # course posts slide PDFs, no lecture videos
   # - type: youtube_channel
   #   url: https://www.youtube.com/@SomeChannel
   #   name: Some Channel
