@@ -1,0 +1,27 @@
+# Sources the daily pipeline checks for new videos.
+# Each entry: a type, a url, and an optional name. Supported types:
+#   youtube_channel  - a channel URL or @handle URL (its /videos tab is scanned)
+#   youtube_playlist - a playlist URL
+#   rss              - any RSS/Atom feed whose items link to videos (YouTube or anything yt-dlp supports)
+#   video            - one specific video (processed once)
+#
+# max_per_run caps how many new videos one daily run processes (the rest wait for the next day).
+# initial_backfill: on the first scan of a channel/playlist/feed, queue only its newest N videos
+#   (older ones are marked skipped so the back catalogue never floods the digest).
+# scan_depth: how many of the newest items per source are checked each run.
+
+max_per_run: 3
+initial_backfill: 1
+scan_depth: 15
+
+sources:
+  - type: video
+    url: https://youtu.be/Qg_3N8pdK9s
+    name: Sample lesson
+  # - type: youtube_channel
+  #   url: https://www.youtube.com/@SomeChannel
+  #   name: Some Channel
+  # - type: youtube_playlist
+  #   url: https://www.youtube.com/playlist?list=PL...
+  # - type: rss
+  #   url: https://example.com/feed.xml
