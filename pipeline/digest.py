@@ -112,6 +112,36 @@ def list_rss(url: str, limit: int) -> list[dict]:
     return out
 
 
+PLAYLIST = re.compile(r"list=([A-Za-z0-9_-]{13,})")
+
+
+def list_course_page(url: str) -> list[dict]:
+    """All YouTube videos linked from a course page, in page (i.e. lecture) order.
+
+    Playlists linked from the page are expanded in place. Login-only hosts
+    (Panopto, Canvas) can't be read and are ignored.
+    """
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 learning-digest/1.0"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        html = r.read().decode("utf-8", errors="ignore")
+    title = (re.search(r"<title>(.*?)</title>", html, re.S | re.I) or [None, url])[1].strip()
+    out, seen = [], set()
+    for m in re.finditer(r"https?://(?:www\.|m\.)?(?:youtube\.com|youtu\.be)/[^\s\"'<>]+", html):
+        link = m.group(0).replace("&amp;", "&")
+        vid = YT_ID.search(link)
+        if vid:
+            items = [{"id": vid.group(1), "url": f"https://www.youtube.com/watch?v={vid.group(1)}", "title": None}]
+        elif pl := PLAYLIST.search(link):
+            items = list_youtube(f"https://www.youtube.com/playlist?list={pl.group(1)}", 500)
+        else:
+            continue
+        for e in items:
+            if e["id"] not in seen:
+                seen.add(e["id"])
+                out.append({**e, "channel": title})
+    return out
+
+
 def cmd_discover(args) -> None:
     cfg = yaml.safe_load(SOURCES.read_text()) or {}
     max_per_run = int(cfg.get("max_per_run", 3))
@@ -131,6 +161,8 @@ def cmd_discover(args) -> None:
                 entries = list_youtube(url, scan)
             elif kind == "rss":
                 entries = list_rss(url, scan)
+            elif kind == "course_page":
+                entries = list_course_page(url)
             else:
                 raise ValueError(f"unknown source type {kind!r}")
         except Exception as e:  # one broken source must not stop the run
@@ -138,7 +170,8 @@ def cmd_discover(args) -> None:
             log(f"[discover] {name}: {e}")
             continue
 
-        first_scan = url not in state["seen_sources"] and kind != "video"
+        # Courses are worked through from lecture 1 (max_per_run per day), so no backfill cut.
+        first_scan = url not in state["seen_sources"] and kind not in ("video", "course_page")
         new = [e for e in entries if e["id"] not in done]
         if first_scan:
             # Don't flood the digest with a channel's back catalogue: take the newest few,

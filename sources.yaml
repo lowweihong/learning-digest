@@ -4,6 +4,8 @@
 #   youtube_playlist - a playlist URL
 #   rss              - any RSS/Atom feed whose items link to videos (YouTube or anything yt-dlp supports)
 #   video            - one specific video (processed once)
+#   course_page      - a course website; every YouTube video/playlist it links is taken in page order,
+#                      starting from lecture 1 (max_per_run lectures per day). Re-scanned daily for new uploads.
 #
 # max_per_run caps how many new videos one daily run processes (the rest wait for the next day).
 # initial_backfill: on the first scan of a channel/playlist/feed, queue only its newest N videos
@@ -18,6 +20,12 @@ sources:
   - type: video
     url: https://youtu.be/Qg_3N8pdK9s
     name: Sample lesson
+  - type: course_page
+    url: https://hanlab.mit.edu/courses/2026-fall-65940
+    name: MIT 6.5940 (Fall 2026)
+  - type: course_page
+    url: https://cs329z.stanford.edu/
+    name: Stanford CS329Z
   # - type: youtube_channel
   #   url: https://www.youtube.com/@SomeChannel
   #   name: Some Channel
