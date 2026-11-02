@@ -4,6 +4,11 @@ title: Concept library
 
 Atomic concepts, one idea per note. Each note links to the lessons it appears in, and its backlinks show what builds on it.
 
+- [[concepts/kv-cache|KV Cache]]
+- [[concepts/grouped-query-attention|Grouped-Query Attention]]
+- [[concepts/rotary-position-embedding|Rotary Position Embedding]]
+- [[concepts/swiglu-activation|SwiGLU Activation]]
+- [[concepts/mixture-of-experts|Mixture of Experts]]
 - [[concepts/loop-tiling-and-reordering|Loop Tiling and Reordering]]
 - [[concepts/simd-vectorization|SIMD Vectorization]]
 - [[concepts/im2col-and-implicit-gemm|Im2Col and Implicit GEMM]]
