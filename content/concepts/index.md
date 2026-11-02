@@ -4,6 +4,12 @@ title: Concept library
 
 Atomic concepts, one idea per note. Each note links to the lessons it appears in, and its backlinks show what builds on it.
 
+- [[concepts/magnitude-based-pruning|Magnitude-Based Pruning]]
+- [[concepts/fine-grained-pruning|Fine-Grained Pruning]]
+- [[concepts/structured-pruning|Structured Pruning]]
+- [[concepts/iterative-pruning|Iterative Pruning]]
+- [[concepts/n-m-sparsity|N:M Sparsity]]
+- [[concepts/second-order-pruning|Second-Order Pruning]]
 - [[concepts/macs-vs-flops|MACs vs FLOPs]]
 - [[concepts/latency-vs-throughput|Latency vs Throughput]]
 - [[concepts/activation-memory-vs-weight-memory|Activation Memory vs Weight Memory]]

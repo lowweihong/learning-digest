@@ -6,6 +6,20 @@ Questions from every lesson, newest first. Answers are folded, so try each quest
 
 <!-- The daily run inserts new sections below this line: "## YYYY-MM-DD — [[lessons/<stem>|<title>]]" followed by that lesson's question callouts. -->
 
+## 2026-11-01 — [[lessons/2026-11-01-pruning-and-sparsity-fundamentals|Pruning and Sparsity: Cutting Redundant Weights Without Losing Accuracy]]
+
+> [!question]- Q1 (recall): Why does fine-grained (unstructured) pruning fail to provide speedup on standard GPUs despite removing 80% of parameters?
+> Standard GPUs are SIMD/SIMT architectures designed around dense matrix multiplication (GEMM). Irregular, scattered zeros cause severe thread divergence and uncoalesced memory reads. Without specialized sparse hardware engines, standard GPU execution kernels spend as much time processing sparse indexing overhead as computing arithmetic. Linked note: [[concepts/fine-grained-pruning|Fine-Grained Pruning]].
+
+> [!question]- Q2 (explain-why): Why does iterative pruning achieve significantly higher compression ratios than one-shot pruning?
+> One-shot pruning eliminates all small parameters simultaneously, inflicting a massive shock that pushes the model far outside its low-loss basin and causing permanent accuracy collapse. Iterative pruning removes weights in gentle increments ($15\%$–$20\%$) and fine-tunes between rounds, giving surviving non-zero weights time to readjust their numerical values via backpropagation to heal the model before the next cut. Linked note: [[concepts/iterative-pruning|Iterative Pruning]].
+
+> [!question]- Q3 (apply): You are deploying an image classification model to a fleet of off-the-shelf mobile devices running standard CPU inference engines. Should you use fine-grained pruning or structured channel pruning, and what trade-off must you accept?
+> You should choose structured channel pruning. Standard mobile CPU runtime engines cannot accelerate arbitrary unstructured zeros. Structured pruning physically removes entire channels, producing a regular, smaller dense matrix that runs faster immediately on stock BLAS kernels. The trade-off is that structured pruning has a much lower maximum compression ratio: accuracy typically begins degrading past $30\%$–$50\%$ channel removal, whereas fine-grained pruning could have removed up to $80\%$–$90\%$ of raw parameters on disk. Linked note: [[concepts/structured-pruning|Structured Pruning]].
+
+> [!question]- Q4 (transfer): In modern Transformer architectures, the multi-head self-attention block computes $A = \text{softmax}(QK^T / \sqrt{d_k})V$, which contains no static weights. How can the principles of sparsity still be applied to accelerate this calculation?
+> Although the attention matrix $A$ contains no static weights, it exhibits dynamic activation sparsity: in long contexts, each token attends strongly to only a tiny fraction of other tokens, while the vast majority of attention weights approach zero after softmax. By identifying and skipping uninformative token pairs dynamically (sparse attention), hardware can avoid computing the full $N \times N$ key-value multiplications, mirroring the memory and compute savings of weight pruning in activation space. Linked note: [[concepts/n-m-sparsity|N:M Sparsity]].
+
 ## 2026-11-01 — [[lessons/2026-11-01-basics-of-neural-networks-and-efficiency-metrics|Basics of Neural Networks and Efficiency Metrics]]
 
 > [!question]- Q1 (recall): If a convolutional neural network requires 500 million Multiply-Accumulate operations (500 MMACs) to process one frame, how many FLOPs does it perform?

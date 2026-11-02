@@ -29,3 +29,4 @@ When combined with compact architectures like SqueezeNet, the overall model shri
 
 ## Appears in
 - [[lessons/2026-11-01-quantization-k-means-and-linear]]: presented as the overarching framework unifying pruning, weight sharing, and entropy coding.
+- [[lessons/2026-11-01-pruning-and-sparsity-fundamentals]]: pruning serves as the crucial first phase of the three-stage pipeline, establishing network sparsity before quantization.
