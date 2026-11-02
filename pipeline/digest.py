@@ -318,18 +318,15 @@ def cmd_transcript(args) -> None:
         return
 
     try:
-        with yt_dlp.YoutubeDL(ydl_opts(
-            writesubtitles=True, writeautomaticsub=True, subtitleslangs=["en.*", "en"],
-            subtitlesformat="vtt", outtmpl=str(out / "subs.%(ext)s"),
-        )) as ydl:
-            info = ydl.extract_info(url, download=True)  # skip_download: only subs are written
+        with yt_dlp.YoutubeDL(ydl_opts()) as ydl:
+            info = ydl.extract_info(url, download=False)
     except yt_dlp.utils.DownloadError as e:
         hint = ""
         if "403" in str(e) and "proxy" in str(e).lower():
             hint = "\nHint: the network policy blocks this host (allow youtube.com, youtu.be, googlevideo.com)."
         elif "Sign in to confirm" in str(e):
             hint = "\nHint: YouTube is bot-checking this IP; set YTDLP_COOKIES to a cookies.txt file."
-        sys.exit(f"transcript fetch failed for {url}: {str(e)[:300]}{hint}")
+        sys.exit(f"metadata fetch failed for {url}: {str(e)[:300]}{hint}")
 
     meta = {k: info.get(k) for k in (
         "id", "title", "channel", "uploader", "upload_date", "duration", "webpage_url", "description", "tags", "chapters",
@@ -339,6 +336,14 @@ def cmd_transcript(args) -> None:
     segs = transcript_api(vid) if len(vid) == 11 else None
     source = "youtube-transcript-api"
     if not segs:
+        try:
+            with yt_dlp.YoutubeDL(ydl_opts(
+                writesubtitles=True, writeautomaticsub=True, subtitleslangs=["en.*", "en"],
+                subtitlesformat="vtt", outtmpl=str(out / "subs.%(ext)s"),
+            )) as ydl:
+                ydl.extract_info(url, download=True)
+        except Exception as e:
+            log(f"[transcript] yt-dlp subtitle download failed: {e}")
         vtts = sorted(out.glob("subs*.vtt"), key=lambda p: (".en." not in p.name, len(p.name)))
         if vtts:
             segs, source = parse_vtt(vtts[0].read_text(errors="ignore")), f"yt-dlp:{vtts[0].name}"

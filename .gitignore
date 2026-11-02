@@ -1,0 +1,8 @@
+node_modules/
+public/
+.quartz-cache/
+.venv/
+work/
+__pycache__/
+*.py[cod]
+.DS_Store

@@ -1,4 +1,14 @@
 {
-  "processed": {},
-  "seen_sources": {}
+  "processed": {
+    "Qg_3N8pdK9s": {
+      "date": "2026-11-01",
+      "lesson": "lessons/2026-11-01-quantization-k-means-and-linear"
+    }
+  },
+  "seen_sources": {
+    "https://cs329z.stanford.edu/": "2026-11-01",
+    "https://hanlab.mit.edu/courses/2026-fall-65940": "2026-11-01",
+    "https://youtu.be/Qg_3N8pdK9s": "2026-11-01"
+  },
+  "skipped": {}
 }
