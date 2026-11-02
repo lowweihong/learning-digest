@@ -4,6 +4,11 @@ title: Concept library
 
 Atomic concepts, one idea per note. Each note links to the lessons it appears in, and its backlinks show what builds on it.
 
+- [[concepts/smoothquant|SmoothQuant]]
+- [[concepts/activation-aware-weight-quantization|Activation-Aware Weight Quantization]]
+- [[concepts/pagedattention|PagedAttention]]
+- [[concepts/continuous-batching|Continuous Batching]]
+- [[concepts/speculative-decoding|Speculative Decoding]]
 - [[concepts/kv-cache|KV Cache]]
 - [[concepts/grouped-query-attention|Grouped-Query Attention]]
 - [[concepts/rotary-position-embedding|Rotary Position Embedding]]
