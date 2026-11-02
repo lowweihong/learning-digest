@@ -1,0 +1,49 @@
+name: Track courses weekly
+
+on:
+  schedule:
+    # Run every Monday at 12:00 UTC (weekly)
+    - cron: '0 12 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  sync-courses:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: pip install -r pipeline/requirements.txt
+
+      - name: Scrape course websites and update course hub pages
+        run: python3 pipeline/courses.py
+
+      - name: Validate content
+        run: python3 pipeline/validate.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "lowweihong"
+          git config user.email "M140042@e.ntu.edu.sg"
+          git add content/courses/
+          if git diff --staged --quiet; then
+            echo "No new course updates this week."
+          else
+            git commit -m "chore(courses): weekly course schedule sync"
+            git push origin main
+            echo "Changes pushed. Triggering Quartz deployment..."
+            gh workflow run deploy.yml --ref main || true
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
