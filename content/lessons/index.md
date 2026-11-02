@@ -11,3 +11,4 @@ One lesson per video. Each lesson rebuilds the video's ideas from first principl
 - **[[lessons/2026-11-01-quantization-k-means-and-linear|2026-11-01: Neural Network Quantization: From Physical Bits to Integer Arithmetic]]**
 - **[[lessons/2026-11-01-advanced-quantization-and-extreme-compression|2026-11-01: Advanced Quantization: Post-Training Calibration, QAT, and 1-Bit XNOR Math]]**
 - **[[lessons/2026-11-01-neural-architecture-search-foundations|2026-11-01: Neural Architecture Search: Designing Efficient Networks from Primitive Blocks to Microcontrollers]]**
+- **[[lessons/2026-11-01-hardware-aware-nas-and-once-for-all-networks|2026-11-01: Hardware-Aware NAS: Once-for-All Networks, Direct Hardware Feedback, and LLM Hybrid Attention]]**

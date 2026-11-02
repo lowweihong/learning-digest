@@ -4,6 +4,11 @@ title: Concept library
 
 Atomic concepts, one idea per note. Each note links to the lessons it appears in, and its backlinks show what builds on it.
 
+- [[concepts/proxylessnas|ProxylessNAS]]
+- [[concepts/once-for-all-network|Once-for-All Network]]
+- [[concepts/zero-shot-nas|Zero-Shot NAS]]
+- [[concepts/neural-hardware-co-search|Neural-Hardware Co-Search]]
+- [[concepts/hybrid-attention-nas|Hybrid Attention NAS]]
 - [[concepts/neural-architecture-search|Neural Architecture Search]]
 - [[concepts/inverted-residual-block|Inverted Residual Block]]
 - [[concepts/channel-shuffle|Channel Shuffle]]
