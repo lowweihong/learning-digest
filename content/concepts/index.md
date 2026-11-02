@@ -4,6 +4,11 @@ title: Concept library
 
 Atomic concepts, one idea per note. Each note links to the lessons it appears in, and its backlinks show what builds on it.
 
+- [[concepts/post-training-quantization|Post-Training Quantization]]
+- [[concepts/quantization-aware-training|Quantization-Aware Training]]
+- [[concepts/straight-through-estimator|Straight-Through Estimator]]
+- [[concepts/xnor-net|XNOR-Net]]
+- [[concepts/micro-scaling-formats|Micro-Scaling Formats]]
 - [[concepts/layer-sensitivity-analysis|Layer Sensitivity Analysis]]
 - [[concepts/automl-for-model-compression|AutoML for Model Compression]]
 - [[concepts/netadapt|NetAdapt]]

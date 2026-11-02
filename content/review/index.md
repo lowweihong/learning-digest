@@ -6,6 +6,27 @@ Questions from every lesson, newest first. Answers are folded, so try each quest
 
 <!-- The daily run inserts new sections below this line: "## YYYY-MM-DD — [[lessons/<stem>|<title>]]" followed by that lesson's question callouts. -->
 
+## 2026-11-01 — [[lessons/2026-11-01-advanced-quantization-and-extreme-compression|Advanced Quantization: Post-Training Calibration, QAT, and 1-Bit XNOR Math]]
+
+> [!question]- Q1 (recall): What is the Straight-Through Estimator (STE), and why is it mandatory for Quantization-Aware Training?
+> The mathematical rounding operator $\text{round}(w)$ is a piecewise constant step function whose derivative is exact zero almost everywhere. Under the calculus chain rule, backpropagating through rounding yields zero gradients ($\frac{\partial \mathcal{L}}{\partial w} = 0$), freezing all training updates. The Straight-Through Estimator substitutes the true derivative with an identity pass-through function ($\frac{d}{dw}\text{round}(w) \approx 1$) on the backward pass, allowing loss gradients to flow directly to the master FP32 weights and update them across quantization bin boundaries. Linked note: [[concepts/straight-through-estimator|Straight-Through Estimator]].
+
+> [!question]- Q2 (explain-why): Why does per-tensor quantization perform poorly on large language models compared to per-channel and micro-scaling group quantization?
+> In large language models, activation and weight distributions vary wildly across channels: a few outlier feature channels exhibit dynamic ranges over $100\times$ larger than normal channels (the "giraffe and ant" problem). A single per-tensor scale factor must stretch across the entire outlier range, making the quantization bucket width so large that normal channels round to zero or suffer massive quantization noise. Per-channel and micro-scaling group quantization assign dedicated scale factors to individual channels or 16-element micro-vectors, isolating outliers and preserving fine resolution for the rest of the network. Linked note: [[concepts/micro-scaling-formats|Micro-Scaling Formats]].
+
+> [!question]- Q3 (apply): Two 4-element vectors in an XNOR-Net layer are $W = [+1, -1, -1, +1]$ and $X = [+1, +1, -1, +1]$. Show how hardware evaluates their dot product using boolean encoding, bitwise XNOR, and popcount.
+> Encode $+1$ as `1` and $-1$ as `0`:
+> - Encoded $W = [1, 0, 0, 1]_2$
+> - Encoded $X = [1, 1, 0, 1]_2$
+> Compute bitwise XNOR: $W \text{ XNOR } X = [1, 0, 1, 1]_2$ (positions 0, 2, and 3 match).
+> Compute popcount: $\text{popcount}([1, 0, 1, 1]_2) = 3$ set bits.
+> Compute final product using the XNOR-Net formula ($2 \cdot \text{popcount} - N$):
+> $$W \cdot X = 2 \cdot (3) - 4 = 6 - 4 = +2$$
+> Verifying with standard multiplication: $(1)(1) + (-1)(1) + (-1)(-1) + (1)(1) = 1 - 1 + 1 + 1 = +2$. The result matches exactly without using a single multiplier or adder. Linked note: [[concepts/xnor-net|XNOR-Net]].
+
+> [!question]- Q4 (transfer): Why is clipping activations to a smaller threshold $T < \max(|X|)$ based on KL divergence beneficial, even though it permanently distorts the extreme outlier values?
+> In neural networks, activation distributions follow sharp, zero-centered bell curves (Gaussian or Laplacian): over $99\%$ of values cluster tightly near zero, while only a microscopic fraction of values extend into the extreme tails. If you set the threshold to the absolute maximum, you waste quantization buckets spanning empty tail space, forcing the dense $99\%$ cluster into too few buckets with high rounding noise. Clipping the outliers distorts a few rare values, but in exchange, it drastically narrows the bucket interval for the vast majority of active data, minimizing overall information loss (KL divergence). Linked note: [[concepts/post-training-quantization|Post-Training Quantization]].
+
 ## 2026-11-01 — [[lessons/2026-11-01-automated-pruning-and-hardware-sparsity|Automated Pruning and Hardware Sparsity: From Reinforcement Learning to Silicon Speedup]]
 
 > [!question]- Q1 (recall): What is the fundamental difference between static weight sparsity and dynamic activation sparsity, and why are their arithmetic savings multiplicative?
