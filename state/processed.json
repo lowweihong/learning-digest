@@ -32,6 +32,10 @@
       "date": "2026-11-01",
       "lesson": "lessons/2026-11-01-intro-to-tinyml-and-efficient-ai"
     },
+    "vyd1bFxPjL8": {
+      "date": "2026-11-01",
+      "lesson": "lessons/2026-11-01-tinyml-mcunet-and-patch-inference"
+    },
     "y-WU7PVj0cg": {
       "date": "2026-11-01",
       "lesson": "lessons/2026-11-01-automated-pruning-and-hardware-sparsity"

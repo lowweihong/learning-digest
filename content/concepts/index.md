@@ -4,6 +4,11 @@ title: Concept library
 
 Atomic concepts, one idea per note. Each note links to the lessons it appears in, and its backlinks show what builds on it.
 
+- [[concepts/mcunet|MCUNet]]
+- [[concepts/patch-based-inference|Patch-Based Inference]]
+- [[concepts/receptive-field-redistribution|Receptive Field Redistribution]]
+- [[concepts/visual-wake-words|Visual Wake Words]]
+- [[concepts/autoencoder-anomaly-detection|Autoencoder Anomaly Detection]]
 - [[concepts/knowledge-distillation|Knowledge Distillation]]
 - [[concepts/soft-targets-and-temperature|Soft Targets and Temperature]]
 - [[concepts/feature-based-distillation|Feature-Based Distillation]]
