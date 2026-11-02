@@ -4,6 +4,11 @@ title: Concept library
 
 Atomic concepts, one idea per note. Each note links to the lessons it appears in, and its backlinks show what builds on it.
 
+- [[concepts/layer-sensitivity-analysis|Layer Sensitivity Analysis]]
+- [[concepts/automl-for-model-compression|AutoML for Model Compression]]
+- [[concepts/netadapt|NetAdapt]]
+- [[concepts/static-vs-dynamic-sparsity|Static vs Dynamic Sparsity]]
+- [[concepts/sparse-convolution|Sparse Convolution]]
 - [[concepts/magnitude-based-pruning|Magnitude-Based Pruning]]
 - [[concepts/fine-grained-pruning|Fine-Grained Pruning]]
 - [[concepts/structured-pruning|Structured Pruning]]

@@ -15,6 +15,10 @@
     "tY75czj43_4": {
       "date": "2026-11-01",
       "lesson": "lessons/2026-11-01-intro-to-tinyml-and-efficient-ai"
+    },
+    "y-WU7PVj0cg": {
+      "date": "2026-11-01",
+      "lesson": "lessons/2026-11-01-automated-pruning-and-hardware-sparsity"
     }
   },
   "seen_sources": {

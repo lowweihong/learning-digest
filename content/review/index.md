@@ -6,6 +6,20 @@ Questions from every lesson, newest first. Answers are folded, so try each quest
 
 <!-- The daily run inserts new sections below this line: "## YYYY-MM-DD — [[lessons/<stem>|<title>]]" followed by that lesson's question callouts. -->
 
+## 2026-11-01 — [[lessons/2026-11-01-automated-pruning-and-hardware-sparsity|Automated Pruning and Hardware Sparsity: From Reinforcement Learning to Silicon Speedup]]
+
+> [!question]- Q1 (recall): What is the fundamental difference between static weight sparsity and dynamic activation sparsity, and why are their arithmetic savings multiplicative?
+> Static weight sparsity is fixed at compile time because the zeroed weights remain constant across all user queries, allowing compilers to pre-plan storage layouts and memory access schedules. Dynamic activation sparsity (such as zeros produced by ReLU) varies on the fly for every single input query, requiring hardware to detect and skip zeros at runtime. Because a multiplication is bypassed if *either* the weight is zero or the activation is zero, a network with $90\%$ zero weights ($10\times$ reduction) and $70\%$ zero activations ($3.3\times$ reduction) achieves $10 \times 3.3 \approx 33\times$ total arithmetic reduction. Linked note: [[concepts/static-vs-dynamic-sparsity|Static vs Dynamic Sparsity]].
+
+> [!question]- Q2 (explain-why): Why did Song Han's AMC reinforcement learning agent automatically choose to prune 1x1 convolutions gently while pruning 3x3 convolutions aggressively?
+> A $1 \times 1$ pointwise convolution contains only a single parameter per channel and serves the critical function of cross-channel information mixing; it contains virtually zero spatial redundancy, making it hyper-sensitive to parameter removal. In contrast, a $3 \times 3$ convolution has 9 parameters per channel spanning a spatial neighborhood, containing high spatial redundancy that surviving weights can easily compensate for during retraining. The RL agent discovered this structural principle automatically by observing validation rewards. Linked note: [[concepts/automl-for-model-compression|AutoML for Model Compression]].
+
+> [!question]- Q3 (apply): An engineer wants to use NetAdapt to reduce a vision model's latency on an edge NPU. Why should they construct an on-device latency lookup table rather than using FLOPs as the optimization objective?
+> Theoretical FLOP counts correlate poorly with true execution latency on modern edge silicon. Hardware speed is governed by memory access bandwidth, cache hit rates, kernel launch overheads, and vector register alignment. A layer modification that cuts FLOPs by $30\%$ might yield $0\%$ speedup if memory bandwidth remains saturated. An on-device lookup table captures real physical execution times across tensor shapes directly on the target processor, ensuring optimization steps deliver guaranteed wall-clock latency drops. See [[concepts/netadapt|NetAdapt]].
+
+> [!question]- Q4 (transfer): Why does standard 3D convolution cause runaway computational explosion when applied to sparse LiDAR point clouds in autonomous vehicles, and how does submanifold sparse convolution prevent it?
+> Standard 3D convolutions slide dense kernels across 3D voxels. Even if $99\%$ of the input space is empty air, every $3 \times 3 \times 3$ kernel dilates non-zero activations to neighboring empty voxels, rapidly turning a sparse point cloud into a dense 3D tensor within a few layers. Submanifold sparse convolution solves this by enforcing that an output feature is computed *if and only if* the center coordinate was already occupied in the input, keeping the spatial sparsity pattern constant across all network depths. See [[concepts/sparse-convolution|Sparse Convolution]].
+
 ## 2026-11-01 — [[lessons/2026-11-01-pruning-and-sparsity-fundamentals|Pruning and Sparsity: Cutting Redundant Weights Without Losing Accuracy]]
 
 > [!question]- Q1 (recall): Why does fine-grained (unstructured) pruning fail to provide speedup on standard GPUs despite removing 80% of parameters?
