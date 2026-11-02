@@ -4,6 +4,11 @@ title: Concept library
 
 Atomic concepts, one idea per note. Each note links to the lessons it appears in, and its backlinks show what builds on it.
 
+- [[concepts/direct-preference-optimization|Direct Preference Optimization]]
+- [[concepts/group-relative-policy-optimization|Group Relative Policy Optimization]]
+- [[concepts/low-rank-adaptation|Low-Rank Adaptation]]
+- [[concepts/qlora|QLoRA]]
+- [[concepts/retrieval-augmented-generation|Retrieval-Augmented Generation]]
 - [[concepts/smoothquant|SmoothQuant]]
 - [[concepts/activation-aware-weight-quantization|Activation-Aware Weight Quantization]]
 - [[concepts/pagedattention|PagedAttention]]

@@ -17,3 +17,4 @@ One lesson per video. Each lesson rebuilds the video's ideas from first principl
 - **[[lessons/2026-11-01-tinyengine-parallel-processing-and-inference-optimizations|2026-11-01: TinyEngine & Parallel Processing: Loop Optimizations, SIMD, and Operator Acceleration]]**
 - **[[lessons/2026-11-01-transformers-llms-and-attention-mechanisms|2026-11-01: Transformers & LLMs: Attention Mechanics, KV Cache, and Modern Foundation Architectures]]**
 - **[[lessons/2026-11-01-llm-quantization-and-deployment-techniques|2026-11-01: LLM Quantization & Deployment: SmoothQuant, AWQ, PagedAttention, and Serving Systems]]**
+- **[[lessons/2026-11-01-llm-post-training-and-alignment|2026-11-01: LLM Post-Training: Alignment, Parameter-Efficient Tuning, and Reasoning Models]]**
