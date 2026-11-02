@@ -4,6 +4,11 @@ title: Concept library
 
 Atomic concepts, one idea per note. Each note links to the lessons it appears in, and its backlinks show what builds on it.
 
+- [[concepts/neural-architecture-search|Neural Architecture Search]]
+- [[concepts/inverted-residual-block|Inverted Residual Block]]
+- [[concepts/channel-shuffle|Channel Shuffle]]
+- [[concepts/differentiable-nas|Differentiable NAS]]
+- [[concepts/tinynas|TinyNAS]]
 - [[concepts/post-training-quantization|Post-Training Quantization]]
 - [[concepts/quantization-aware-training|Quantization-Aware Training]]
 - [[concepts/straight-through-estimator|Straight-Through Estimator]]

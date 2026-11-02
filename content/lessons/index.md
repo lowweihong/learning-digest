@@ -10,3 +10,4 @@ One lesson per video. Each lesson rebuilds the video's ideas from first principl
 - **[[lessons/2026-11-01-automated-pruning-and-hardware-sparsity|2026-11-01: Automated Pruning and Hardware Sparsity: From Reinforcement Learning to Silicon Speedup]]**
 - **[[lessons/2026-11-01-quantization-k-means-and-linear|2026-11-01: Neural Network Quantization: From Physical Bits to Integer Arithmetic]]**
 - **[[lessons/2026-11-01-advanced-quantization-and-extreme-compression|2026-11-01: Advanced Quantization: Post-Training Calibration, QAT, and 1-Bit XNOR Math]]**
+- **[[lessons/2026-11-01-neural-architecture-search-foundations|2026-11-01: Neural Architecture Search: Designing Efficient Networks from Primitive Blocks to Microcontrollers]]**

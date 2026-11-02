@@ -6,6 +6,20 @@ Questions from every lesson, newest first. Answers are folded, so try each quest
 
 <!-- The daily run inserts new sections below this line: "## YYYY-MM-DD — [[lessons/<stem>|<title>]]" followed by that lesson's question callouts. -->
 
+## 2026-11-01 — [[lessons/2026-11-01-neural-architecture-search-foundations|Neural Architecture Search: Designing Efficient Networks from Primitive Blocks to Microcontrollers]]
+
+> [!question]- Q1 (recall): Why does MobileNetV2's inverted residual block suffer from an activation memory bottleneck despite achieving a 4.6x parameter reduction compared to ResNet-18?
+> In an inverted residual block, low-dimensional input channels ($N$) are expanded by a factor of 6 ($N \to 6N$) using a $1 \times 1$ pointwise convolution before the spatial depthwise convolution. Although depthwise convolutions require very few weight parameters, the intermediate activation tensor inflates to $H \times W \times 6N$. At early layers where spatial resolution ($H \times W$) is large, buffering this expanded intermediate tensor consumes up to $80\%$ more peak activation RAM than standard ResNet architectures. Linked note: [[concepts/inverted-residual-block|Inverted Residual Block]].
+
+> [!question]- Q2 (explain-why): How does Channel Shuffle restore cross-channel information exchange in ShuffleNet, and why does it incur near-zero latency overhead?
+> When stacked $1 \times 1$ group convolutions are used to save compute, channels within separate groups remain completely isolated. Channel Shuffle reshapes the output channels from $(G, C/G)$ to $(C/G, G)$ and transposes the dimensions before flattening back to $C$. This evenly distributes channels from each group into every group of the subsequent layer. In hardware implementation, this requires no physical memory copying; compilers fuse the transpose into the index reading strides of the subsequent convolution kernel. Linked note: [[concepts/channel-shuffle|Channel Shuffle]].
+
+> [!question]- Q3 (apply): How does Differentiable NAS (e.g. ProxylessNAS) incorporate physical on-device latency into a standard gradient descent loss function?
+> Physical latency on the target chip is pre-measured for every candidate operation (e.g., $3 \times 3$ conv, $5 \times 5$ conv, identity). The expected latency of a layer is computed as the probability-weighted sum of its operator latencies: $\mathbb{E}[\text{Latency}] = \sum_i p_i \cdot \text{Lat}(op_i)$, where $p_i = \text{softmax}(\alpha_i)$. This expected latency is multiplied by a scaling coefficient $\lambda$ and added directly to the task loss: $\mathcal{L} = \mathcal{L}_{\text{task}} + \lambda \cdot \mathbb{E}[\text{Latency}]$. Backpropagation computes partial derivatives with respect to architectural parameters $\alpha$, naturally driving down the selection probability of slow operators. Linked note: [[concepts/differentiable-nas|Differentiable NAS]].
+
+> [!question]- Q4 (transfer): Why is the primary objective of TinyNAS to *maximize* FLOPs under an SRAM limit, whereas mobile/cloud NAS typically aims to *minimize* FLOPs?
+> On mobile and cloud platforms, RAM is abundant (gigabytes), while compute and battery energy are the primary costs; NAS minimizes FLOPs to reduce latency and power. On microcontrollers, SRAM is an unyielding brick wall ($256\text{ KB}$), while arithmetic compute is comparatively cheap and abundant. If a candidate network fits comfortably inside the $256\text{ KB}$ SRAM limit, maximizing its arithmetic compute (FLOPs) allows the network to pack the highest possible representational capacity and feature complexity into that tight memory budget, directly maximizing ImageNet accuracy. Linked note: [[concepts/tinynas|TinyNAS]].
+
 ## 2026-11-01 — [[lessons/2026-11-01-advanced-quantization-and-extreme-compression|Advanced Quantization: Post-Training Calibration, QAT, and 1-Bit XNOR Math]]
 
 > [!question]- Q1 (recall): What is the Straight-Through Estimator (STE), and why is it mandatory for Quantization-Aware Training?
