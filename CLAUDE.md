@@ -35,9 +35,10 @@ If the queue is empty, still commit `state/` if it changed, then stop.
 ## Ground rules
 
 - **Only teach what the source supports.** Each claim in a lesson comes from the transcript, or is standard background knowledge that you clearly mark as *Background*. If the transcript is thin, garbled or auto-translated, say so at the top of the lesson. Don't fill the gaps with guesses.
+- **Lead with examples:** Always start an explanation with a concrete scenario, real numbers, or a tangible puzzle *before* presenting the theory, equation, or abstract rule.
+- **Use plain language:** Write like a senior engineer explaining things clearly over coffee. Cut academic jargon, purple prose, and textbook stiffness. Keep sentences direct, punchy, and easy to read.
 - Give timestamps (`[mm:ss]` links, `<url>&t=<seconds>s`) for the video's key claims, in Source notes. For a **slides** source (`kind: slides` in the transcript header), cite `[slide N]` instead, and set `duration: "<n> slides"`. Slides are terse, so mark anything you fill in between bullet points as *Background*.
 - If the video makes a dubious or contested claim, flag it in a `> [!warning]` callout. Don't drop it silently.
-- Write for a smart reader who is new to the topic. Be concise and concrete, with no filler or hype.
 
 ## Lesson: `content/lessons/YYYY-MM-DD-<slug>.md`
 
