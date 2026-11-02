@@ -72,17 +72,24 @@ The atomic concepts in **dependency order**: each one depends only on those abov
 Add a small `mermaid` graph TD of the dependencies when there are 4 or more concepts.
 
 ## First-principles rebuild
-Rebuild the video's argument from the ground up, not in the video's order.
-### 0. Starting assumptions
-The few facts or axioms everything else rests on. Mark each one as *given by the video* or *Background*.
-### 1. <Concept>
-- **Question it answers:** why we need this idea.
-- **Derivation:** why it must be true or must work this way, from the previous steps.
-- **Worked example:** a small concrete case with real numbers or code.
-- **In the video:** [mm:ss] what the speaker says or shows.
-### 2. ...
+Tell the story of the idea from the ground up, organized into clear narrative acts:
+
+### 0. The Reality Check & Motivation
+The fundamental physical, algorithmic, or systems dilemma that made this work necessary. What was broken, painful, or bottlenecked before this idea?
+
+### 1. Ground Zero (The Core Basis Concept)
+Strip away library and framework jargon. Start with the bare-metal primitives and fundamental truths everyone agrees on. Explain how the domain actually works before jumping into solutions.
+
+### 2. The Idea Journey (The Breakthrough)
+Walk through how a practitioner or researcher discovers the solution:
+- **The naive first attempt:** What is the obvious thing to try, and why does it fall short?
+- **The conceptual leap:** The core insight or reformulation that breaks through the barrier.
+- **The concrete mechanism:** How it actually executes (with concrete numbers, real lecture matrices/code, and small diagrams where helpful).
+- **The honest trade-off:** What is traded away (accuracy, compute, latency, flexibility), and when this method should *not* be used.
+Embed timestamp or slide citations `[mm:ss]` / `[slide N]` naturally into the narrative prose.
+
 ### Putting it together
-How the concepts combine into the video's main result or claim.
+How all the atomic concepts combine into the final working system or result.
 
 ## Connections
 - Links to existing `content/concepts/*` notes from earlier lessons that this builds on, contrasts with or generalizes. Check the existing library first, with `ls content/concepts` and grep.
