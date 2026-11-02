@@ -1,8 +1,16 @@
 {
   "processed": {
+    "CzGTQseaM38": {
+      "date": "2026-11-01",
+      "lesson": "lessons/2026-11-01-basics-of-neural-networks-and-efficiency-metrics"
+    },
     "Qg_3N8pdK9s": {
       "date": "2026-11-01",
       "lesson": "lessons/2026-11-01-quantization-k-means-and-linear"
+    },
+    "tY75czj43_4": {
+      "date": "2026-11-01",
+      "lesson": "lessons/2026-11-01-intro-to-tinyml-and-efficient-ai"
     }
   },
   "seen_sources": {
