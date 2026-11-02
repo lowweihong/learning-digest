@@ -8,6 +8,10 @@
       "date": "2026-11-01",
       "lesson": "lessons/2026-11-01-basics-of-neural-networks-and-efficiency-metrics"
     },
+    "EHsWS2OYk0g": {
+      "date": "2026-11-01",
+      "lesson": "lessons/2026-11-01-tinyengine-parallel-processing-and-inference-optimizations"
+    },
     "IlPSXPrchrM": {
       "date": "2026-11-01",
       "lesson": "lessons/2026-11-01-hardware-aware-nas-and-once-for-all-networks"

@@ -4,6 +4,11 @@ title: Concept library
 
 Atomic concepts, one idea per note. Each note links to the lessons it appears in, and its backlinks show what builds on it.
 
+- [[concepts/loop-tiling-and-reordering|Loop Tiling and Reordering]]
+- [[concepts/simd-vectorization|SIMD Vectorization]]
+- [[concepts/im2col-and-implicit-gemm|Im2Col and Implicit GEMM]]
+- [[concepts/in-place-depthwise-convolution|In-Place Depthwise Convolution]]
+- [[concepts/winograd-convolution|Winograd Convolution]]
 - [[concepts/mcunet|MCUNet]]
 - [[concepts/patch-based-inference|Patch-Based Inference]]
 - [[concepts/receptive-field-redistribution|Receptive Field Redistribution]]

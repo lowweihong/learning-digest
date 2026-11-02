@@ -14,3 +14,4 @@ One lesson per video. Each lesson rebuilds the video's ideas from first principl
 - **[[lessons/2026-11-01-hardware-aware-nas-and-once-for-all-networks|2026-11-01: Hardware-Aware NAS: Once-for-All Networks, Direct Hardware Feedback, and LLM Hybrid Attention]]**
 - **[[lessons/2026-11-01-knowledge-distillation-principles|2026-11-01: Knowledge Distillation: Dark Knowledge, Feature Matching, Self-Distillation, and Network Augmentation]]**
 - **[[lessons/2026-11-01-tinyml-mcunet-and-patch-inference|2026-11-01: TinyML & MCUNet: Microcontroller Deep Learning, Patch-Based Inference, and Edge Intelligence]]**
+- **[[lessons/2026-11-01-tinyengine-parallel-processing-and-inference-optimizations|2026-11-01: TinyEngine & Parallel Processing: Loop Optimizations, SIMD, and Operator Acceleration]]**
