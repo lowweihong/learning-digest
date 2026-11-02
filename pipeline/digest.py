@@ -116,7 +116,16 @@ def list_rss(url: str, limit: int) -> list[dict]:
 PLAYLIST = re.compile(r"list=([A-Za-z0-9_-]{13,})")
 
 
-SLIDES = re.compile(r"href=[\"']([^\"']*(?:slides?|lecture)[^\"']*\\.pdf)[\"']", re.I)
+SLIDES = re.compile(r"href=[\"']([^\"']*(?:slides?|lec)[^\"']*?\.pdf(?:\?[^\"']*)?)[\"']", re.I)
+
+
+def direct_pdf(link: str) -> str:
+    """Share links -> direct downloads (Dropbox dl=0 serves an HTML viewer)."""
+    if "dropbox.com" in link:
+        link = re.sub(r"([?&])dl=0", r"\1dl=1", link)
+        if "dl=1" not in link:
+            link += ("&" if "?" in link else "?") + "dl=1"
+    return link
 
 
 def list_course_page(url: str, slides: bool = False) -> list[dict]:
@@ -146,10 +155,10 @@ def list_course_page(url: str, slides: bool = False) -> list[dict]:
                 out.append({**e, "channel": title})
     if slides:
         for m in SLIDES.finditer(html):
-            link = urllib.parse.urljoin(url, m.group(1).replace("&amp;", "&"))
+            link = direct_pdf(urllib.parse.urljoin(url, m.group(1).replace("&amp;", "&")))
             if link not in seen:
                 seen.add(link)
-                out.append({"id": link, "url": link, "title": Path(link).stem, "channel": title, "kind": "slides"})
+                out.append({"id": link, "url": link, "title": Path(urllib.parse.urlparse(link).path).stem, "channel": title, "kind": "slides"})
     return out
 
 
@@ -275,7 +284,7 @@ def slides_text(url: str, out: Path) -> None:
         (out / "slides.pdf").write_bytes(r.read())
     reader = PdfReader(out / "slides.pdf")
     pages = [f"[slide {i}] " + re.sub(r"[ \t]+", " ", (pg.extract_text() or "").strip()) for i, pg in enumerate(reader.pages, 1)]
-    meta = {"id": url, "title": Path(url).stem, "webpage_url": url, "kind": "slides", "pages": len(pages)}
+    meta = {"id": url, "title": Path(urllib.parse.urlparse(url).path).stem, "webpage_url": url, "kind": "slides", "pages": len(pages)}
     (out / "meta.json").write_text(json.dumps(meta, indent=2))
     (out / "transcript.md").write_text(
         f"# {meta['title']}\n\nurl: {url}\nkind: slides ({len(pages)} slides; no audio, cite [slide N])\n\n"
