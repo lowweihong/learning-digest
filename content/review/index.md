@@ -6,6 +6,20 @@ Questions from every lesson, newest first. Answers are folded, so try each quest
 
 <!-- The daily run inserts new sections below this line: "## YYYY-MM-DD — [[lessons/<stem>|<title>]]" followed by that lesson's question callouts. -->
 
+## 2026-11-01 — [[lessons/2026-11-01-knowledge-distillation-principles|Knowledge Distillation: Dark Knowledge, Feature Matching, Self-Distillation, and Network Augmentation]]
+
+> [!question]- Q1 (recall): Why must the distillation loss term be multiplied by $T^2$ when using temperature scaling?
+> When pre-softmax logits are divided by temperature $T$, the gradient of the softened probabilities with respect to the input logits scales inversely with $T^2$ ($\frac{\partial \mathcal{L}_{\text{KD}}}{\partial z_i} \propto \frac{1}{T^2}$). As temperature increases (e.g., $T = 4$ or $T = 5$), this causes the magnitude of the distillation gradient to shrink drastically ($16\times$ to $25\times$) relative to standard cross-entropy with hard labels. Multiplying the distillation loss by $T^2$ ensures that the supervisory gradient from the teacher maintains a consistent magnitude regardless of the chosen temperature. Linked note: [[concepts/soft-targets-and-temperature|Soft Targets and Temperature]].
+
+> [!question]- Q2 (explain-why): How does FitNets resolve channel dimension mismatches when aligning intermediate feature maps between teacher and student?
+> A large teacher network typically produces intermediate feature maps with significantly more channels (e.g., 256 or 512 channels) than a compact student network (e.g., 64 channels). FitNets places a trainable $1 \times 1$ convolutional layer (or linear projection matrix) on top of the student's intermediate layer. This adapter projects the student's feature maps into the teacher's channel dimension so an L2 distance or cosine similarity loss can be computed. Crucially, this adapter is used only during training and is discarded at inference time, leaving the student's runtime footprint unchanged. Linked note: [[concepts/feature-based-distillation|Feature-Based Distillation]].
+
+> [!question]- Q3 (apply): In Deep Mutual Learning, how can two peer models of equal capacity improve each other without a larger teacher model?
+> Because the two networks start from different random weight initializations, their optimization trajectories explore distinct regions of the loss landscape. On any given mini-batch, one network may be more confident or capture different feature correlations than the other. By training simultaneously with a bidirectional KL divergence loss on each other's softened outputs, they exchange complementary dark knowledge and act as regularizers for each other, consistently achieving higher validation accuracy than either network trained independently. Linked note: [[concepts/self-distillation|Self-Distillation]].
+
+> [!question]- Q4 (transfer): Why do data regularizations like Mixup and DropBlock harm tiny models, and how does Network Augmentation (NetAug) resolve this?
+> Techniques like Mixup and DropBlock were designed to prevent overfitting in large over-parameterized models by making the training task artificially harder. Tiny models, by contrast, suffer primarily from underfitting—they lack sufficient parametric capacity to learn even the clean training distribution. Making the task harder cripples their training. NetAug resolves this by keeping the data intact and instead temporarily expanding the network's capacity during training with auxiliary channels and layers sharing base weights. This gives the optimizer extra degrees of freedom to escape local minima; at deployment, the auxiliary parameters are discarded, yielding a base model with zero extra runtime cost. Linked note: [[concepts/network-augmentation|Network Augmentation]].
+
 ## 2026-11-01 — [[lessons/2026-11-01-hardware-aware-nas-and-once-for-all-networks|Hardware-Aware NAS: Once-for-All Networks, Direct Hardware Feedback, and LLM Hybrid Attention]]
 
 > [!question]- Q1 (recall): Why does the Once-for-All (OFA) network use Progressive Shrinking (PS) during supernet training rather than sampling random sub-networks from the start?
