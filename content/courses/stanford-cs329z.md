@@ -8,7 +8,7 @@ tags: [course]
 
 > [!info] Stanford CS329Z | Engineering AI Agents · Fall 2026
 > Course site: https://cs329z.stanford.edu/  
-> **21 lectures · 0 lessons written.** Lessons are added daily, in lecture order.
+> **22 lectures · 0 lessons written.** Lessons are added daily, in lecture order.
 
 ## Foundations & Landscape
 
@@ -283,5 +283,14 @@ From reactive to proactive agents: General User Models (GUM), Next Action Predic
 - [Shaikh et al. "Creating General User Models from Computer Use." UIST (2025).](https://arxiv.org/abs/2505.10831)
 - [Shaikh et al. "Learning Next Action Predictors from Human-Computer Interaction." arXiv (2026).](https://arxiv.org/abs/2603.05923)
 - [Steinberger. "OpenClaw: Open-source proactive AI agent." (2025).](https://github.com/openclaw/openclaw)
+
+**Lesson:** *not written yet*
+
+## Open Problems & Final Demos
+
+### Lecture 22: Final Project Demo Day
+*Wed Dec 9*
+
+Held during the end-quarter examination period, 3:30–6:30 p.m. Location TBA.
 
 **Lesson:** *not written yet*
