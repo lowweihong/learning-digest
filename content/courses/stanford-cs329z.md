@@ -181,6 +181,8 @@ Traces, demonstrations, and feedback, data for optimization vs. evaluation, data
 
 Finding maximally informative data, filtering and selection strategies, tiny-but-targeted benchmarks, annotation practices, quality assessment, and building datasets from agent traces.
 
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture12.pdf)
+
 **Readings:**
 - [Yang et al. "SWE-smith: Scaling Data for Software Engineering Agents." NeurIPS D&B (2025).](https://arxiv.org/abs/2504.21798)
 - [Shankar et al. "Who Validates the Validators? Aligning LLM-Assisted Evaluation with Human Preferences." UIST (2024).](https://arxiv.org/abs/2404.12272)
@@ -195,6 +197,8 @@ Finding maximally informative data, filtering and selection strategies, tiny-but
 
 Why evals are hard, the 4-tuple framework (request, environment, stopping criteria, scorer), designing each component, properties of good benchmarks, realistic scaffolding, and reliability dimensions.
 
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture13.pdf)
+
 **Readings:**
 - [Zhu et al. "Establishing Best Practices for Building Rigorous Agentic Benchmarks." (2025).](https://arxiv.org/abs/2507.02825)
 - [Press. "How to Build Good Language Modeling Benchmarks." (2024).](https://ofir.io/How-to-Build-Good-Language-Modeling-Benchmarks/)
@@ -205,7 +209,7 @@ Why evals are hard, the 4-tuple framework (request, environment, stopping criter
 ### Lecture 14: 📺 Fireside Chat with Andrew Ng
 *Mon Nov 9*
 
-A fireside chat with Andrew Ng, hosted by Diyi Yang. Professor Ng is the founder of DeepLearning.AI, co-founder of Coursera, founding lead of Google Brain, and a Professor of Computer Science at Stanford.
+A fireside chat with Andrew Ng, hosted by Diyi Yang. Professor Ng is the founder of DeepLearning.AI, co-founder of Coursera, founding lead of Google Brain, and an Adjunct Professor of Computer Science at Stanford.
 
 **Lesson:** *not written yet*
 

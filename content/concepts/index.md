@@ -4,6 +4,12 @@ title: Concept library
 
 Atomic concepts, one idea per note. Each note links to the lessons it appears in, and its backlinks show what builds on it.
 
+- [[concepts/attention-sinks|Attention Sinks]]
+- [[concepts/shifted-sparse-attention|Shifted Sparse Attention]]
+- [[concepts/lost-in-the-middle|Lost in the Middle]]
+- [[concepts/dual-attention|Dual Attention]]
+- [[concepts/query-aware-sparsity|Query-Aware Sparsity]]
+- [[concepts/state-space-models|State Space Models]]
 - [[concepts/direct-preference-optimization|Direct Preference Optimization]]
 - [[concepts/group-relative-policy-optimization|Group Relative Policy Optimization]]
 - [[concepts/low-rank-adaptation|Low-Rank Adaptation]]

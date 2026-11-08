@@ -18,3 +18,4 @@ One lesson per video. Each lesson rebuilds the video's ideas from first principl
 - **[[lessons/2026-11-01-transformers-llms-and-attention-mechanisms|2026-11-01: Transformers & LLMs: Attention Mechanics, KV Cache, and Modern Foundation Architectures]]**
 - **[[lessons/2026-11-01-llm-quantization-and-deployment-techniques|2026-11-01: LLM Quantization & Deployment: SmoothQuant, AWQ, PagedAttention, and Serving Systems]]**
 - **[[lessons/2026-11-01-llm-post-training-and-alignment|2026-11-01: LLM Post-Training: Alignment, Parameter-Efficient Tuning, and Reasoning Models]]**
+- **[[lessons/2026-11-04-long-context-llms-context-extension-and-sparse-attention|2026-11-04: Long-Context LLMs: Context Extension, Sparse Attention, and State Space Models]]**
