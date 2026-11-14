@@ -17,7 +17,7 @@ tags: [course]
 
 Course logistics, a brief history of agents, and the anatomy of an agent: LLM core, reasoning, memory, tools, and environment. Compound AI systems and workflows vs. agents, plus the key challenges of reliability, training, safety, and evaluation.
 
-[Slides](https://web.stanford.edu/class/cs329z/slides/lecture01.pdf)
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture01.pdf) · [Video](https://www.youtube.com/watch?v=DGI4vucR71w)
 
 **Readings:**
 - [Zaharia et al. "The Shift from Models to Compound AI Systems." BAIR Blog (2024).](https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/)
@@ -31,7 +31,7 @@ Course logistics, a brief history of agents, and the anatomy of an agent: LLM co
 
 Language model internals for agent builders: decoding strategies, transformer attention (including linear and hybrid) and context length, the pretraining-to-post-training pipeline, inference and test-time scaling, structured I/O and constrained decoding, and context engineering.
 
-[Slides](https://web.stanford.edu/class/cs329z/slides/lecture02.pdf)
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture02.pdf) · [Video](https://www.youtube.com/watch?v=Vr1NzH8bT44)
 
 **Readings:**
 - [Vaswani et al. "Attention Is All You Need." NeurIPS (2017).](https://arxiv.org/abs/1706.03762)
@@ -47,7 +47,7 @@ Language model internals for agent builders: decoding strategies, transformer at
 
 Why retrieval helps, then the RAG pipeline end to end: indexing (chunking, contextual retrieval, RAPTOR, HNSW), retrievers from BM25 and DPR to hybrid search, reranking, and ColBERT, agentic RAG (Self-RAG, Search-R1), and common failure modes. Plus a course project overview.
 
-[Slides](https://web.stanford.edu/class/cs329z/slides/lecture03.pdf)
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture03.pdf) · [Video](https://www.youtube.com/watch?v=psLc-46GqY0)
 
 **Readings:**
 - [Lewis et al. "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks." NeurIPS (2020).](https://arxiv.org/abs/2005.11401)
@@ -61,7 +61,7 @@ Why retrieval helps, then the RAG pipeline end to end: indexing (chunking, conte
 
 Why LLMs need tools and how they learn to use them: Toolformer, scaling to thousands of APIs with Gorilla and ToolLLM, standard interfaces from REST to function calling to MCP, evaluating tool use with BFCL, ToolBench, and τ-bench, and common failure modes.
 
-[Slides](https://web.stanford.edu/class/cs329z/slides/lecture04.pdf)
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture04.pdf) · [Video](https://www.youtube.com/watch?v=s0S38lz6O7M)
 
 **Readings:**
 - [Schick et al. "Toolformer: Language Models Can Teach Themselves to Use Tools." NeurIPS (2023).](https://arxiv.org/abs/2302.04761)
@@ -77,7 +77,7 @@ Why LLMs need tools and how they learn to use them: Toolformer, scaling to thous
 
 The data, system, and evals pillars of agent engineering, with live demos of DSPy (signatures, modules, optimizers) and LangGraph (state, nodes, edges). A tour of open-source agent harnesses (mini-SWE-agent, OpenHands, Pi), durable orchestration with Temporal, observability tooling, and best practices.
 
-[Slides](https://web.stanford.edu/class/cs329z/slides/lecture05.pdf)
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture05.pdf) · [Video](https://www.youtube.com/watch?v=q0Q-Hy8TTps)
 
 **Readings:**
 - [Khattab et al. "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines." ICLR (2024).](https://arxiv.org/abs/2310.03714)
@@ -218,6 +218,8 @@ A fireside chat with Andrew Ng, hosted by Diyi Yang. Professor Ng is the founder
 
 The three grader types, designing judge prompts, known biases, pairwise vs. pointwise evaluation, non-determinism metrics (pass@k vs. pass^k), harness design, and Anthropic's 8-step roadmap.
 
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture15.pdf)
+
 **Readings:**
 - [Grace et al. "Demystifying Evals for AI Agents." Anthropic (2026).](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
 - [Zheng et al. "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena." NeurIPS (2023).](https://arxiv.org/abs/2306.05685)
@@ -263,7 +265,7 @@ Privacy risks of tool access, prompt injection (including indirect injection), r
 
 **Lesson:** *not written yet*
 
-## Coding Agents & Proactive Agents
+## Coding Agents & Personal Agents
 
 ### Lecture 20: Coding & Software Agents
 *Mon Nov 30*
@@ -278,10 +280,10 @@ How coding agents work end to end: the SWE-agent, Claude Code, and OpenHands arc
 
 **Lesson:** *not written yet*
 
-### Lecture 21: Proactive Agents
+### Lecture 21: Personal Agents
 *Wed Dec 2*
 
-From reactive to proactive agents: General User Models (GUM), Next Action Prediction, open-source proactive personal agents, privacy and trust implications, and when agents should initiate vs. wait (mixed initiative).
+From reactive to proactive, personal agents: General User Models (GUM), Next Action Prediction, open-source proactive personal agents, privacy and trust implications, and when agents should initiate vs. wait (mixed initiative).
 
 **Readings:**
 - [Shaikh et al. "Creating General User Models from Computer Use." UIST (2025).](https://arxiv.org/abs/2505.10831)

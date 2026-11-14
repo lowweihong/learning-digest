@@ -19,3 +19,6 @@ One lesson per video. Each lesson rebuilds the video's ideas from first principl
 - **[[lessons/2026-11-01-llm-quantization-and-deployment-techniques|2026-11-01: LLM Quantization & Deployment: SmoothQuant, AWQ, PagedAttention, and Serving Systems]]**
 - **[[lessons/2026-11-01-llm-post-training-and-alignment|2026-11-01: LLM Post-Training: Alignment, Parameter-Efficient Tuning, and Reasoning Models]]**
 - **[[lessons/2026-11-04-long-context-llms-context-extension-and-sparse-attention|2026-11-04: Long-Context LLMs: Context Extension, Sparse Attention, and State Space Models]]**
+- **[[lessons/2026-11-06-vision-transformers-perception-and-autoregressive-generation|2026-11-06: Vision Transformers: Efficient Perception and Autoregressive Generation]]**
+- **[[lessons/2026-11-11-diffusion-models-foundations-latent-spaces-and-deep-compression|2026-11-11: Diffusion Models (Part I): Foundations, Latent Spaces, and Deep Compression]]**
+- **[[lessons/2026-11-13-diffusion-models-sparsity-quantization-and-flow-distillation|2026-11-13: Diffusion Models (Part II): Sparsity, Quantization, and Flow Map Distillation]]**

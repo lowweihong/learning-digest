@@ -4,6 +4,19 @@ title: Concept library
 
 Atomic concepts, one idea per note. Each note links to the lessons it appears in, and its backlinks show what builds on it.
 
+- [[concepts/svdquant|SVDQuant]]
+- [[concepts/deltaquant|DeltaQuant]]
+- [[concepts/radial-attention|Radial Attention]]
+- [[concepts/anyflow-distillation|AnyFlow Distillation]]
+- [[concepts/denoising-diffusion-probabilistic-models|Denoising Diffusion Probabilistic Models]]
+- [[concepts/classifier-free-guidance|Classifier-Free Guidance]]
+- [[concepts/latent-diffusion-models|Latent Diffusion Models]]
+- [[concepts/deep-compression-autoencoder|Deep Compression Autoencoder]]
+- [[concepts/shifted-window-attention|Shifted Window Attention]]
+- [[concepts/linear-attention|Linear Attention]]
+- [[concepts/vector-quantization-for-images|Vector Quantization for Images]]
+- [[concepts/locality-aware-parallel-decoding|Locality-Aware Parallel Decoding]]
+- [[concepts/next-scale-autoregressive-modeling|Next-Scale Autoregressive Modeling]]
 - [[concepts/attention-sinks|Attention Sinks]]
 - [[concepts/shifted-sparse-attention|Shifted Sparse Attention]]
 - [[concepts/lost-in-the-middle|Lost in the Middle]]
