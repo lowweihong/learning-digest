@@ -91,7 +91,7 @@ The data, system, and evals pillars of agent engineering, with live demos of DSP
 
 Workflows vs. agents and the design patterns for each: five composable workflow patterns, reasoning and acting patterns (ReAct, Reflexion, CodeAct, ReWOO), and context-management patterns (event logs, compaction, observation masking, context isolation). Case study of the Pi harness.
 
-[Slides](https://web.stanford.edu/class/cs329z/slides/lecture06.pdf)
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture06.pdf) · [Video](https://www.youtube.com/watch?v=JC_pLC5EX_w)
 
 **Readings:**
 - [Yao et al. "ReAct: Synergizing Reasoning and Acting in Language Models." ICLR (2023).](https://arxiv.org/abs/2210.03629)
@@ -109,7 +109,7 @@ Workflows vs. agents and the design patterns for each: five composable workflow 
 
 Why agents need memory and the four types (working, episodic, semantic, procedural). Four architecture patterns: skill libraries, tiered hierarchies like MemGPT, reflective consolidation, and memory maintenance. Memory benchmarks and open problems in forgetting, privacy, and over-personalization.
 
-[Slides](https://web.stanford.edu/class/cs329z/slides/lecture07.pdf)
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture07.pdf) · [Video](https://www.youtube.com/watch?v=qh5tP6PBZ6U)
 
 **Readings:**
 - [Sumers et al. "Cognitive Architectures for Language Agents." TMLR (2024).](https://arxiv.org/abs/2309.02427)
@@ -123,7 +123,7 @@ Why agents need memory and the four types (working, episodic, semantic, procedur
 
 When to use single vs. multi-agent systems and how to build them: orchestration patterns (orchestrator, swarm, hybrid), communication through handoffs, message boards, and the A2A protocol, and coordination infrastructure (task ledgers, shared memory, worktree isolation). Why multi-agent systems fail.
 
-[Slides](https://web.stanford.edu/class/cs329z/slides/lecture08.pdf)
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture08.pdf) · [Video](https://www.youtube.com/watch?v=TlX_ft_PQIM)
 
 **Readings:**
 - [Wu et al. "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation." COLM (2024).](https://arxiv.org/abs/2308.08155)
