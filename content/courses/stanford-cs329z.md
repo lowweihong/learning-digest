@@ -139,7 +139,7 @@ When to use single vs. multi-agent systems and how to build them: orchestration 
 
 When optimization pays off and how to do it: context optimization (bootstrapped few-shot, MIPROv2, OPRO, TextGrad, GEPA), weight optimization (SFT on agent rollouts, RL with PPO and GRPO, on-policy distillation), agents as optimizers (Darwin Gödel Machine, autoresearch), and when to optimize prompts vs. weights.
 
-[Slides](https://web.stanford.edu/class/cs329z/slides/lecture09.pdf)
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture09.pdf) · [Video](https://www.youtube.com/watch?v=e_m99aR7_3Q)
 
 **Readings:**
 - [Agrawal et al. "GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning." ICLR (2026).](https://arxiv.org/abs/2507.19457)
@@ -153,7 +153,7 @@ When optimization pays off and how to do it: context optimization (bootstrapped 
 
 Ryan Marten and Alex Shaw (Laude Institute), co-creators of Terminal-Bench, on benchmarking how well AI agents accomplish real-world tasks in a terminal environment.
 
-[Slides](https://web.stanford.edu/class/cs329z/slides/lecture10.pdf)
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture10.pdf) · [Video](https://www.youtube.com/watch?v=7GW-9ug2nvw)
 
 **Readings:**
 - [Terminal-Bench project site (leaderboard, tasks, and harness).](https://www.tbench.ai/)
@@ -244,6 +244,8 @@ Carlos Jimenez and Alexander Wettig (Anthropic), creators of SWE-bench, on the e
 *Wed Nov 18*
 
 Privacy risks of tool access, prompt injection (including indirect injection), red-teaming, sandboxing and permission models, output guardrails, liability considerations, responsible deployment, and human-in-the-loop patterns.
+
+[Slides](https://web.stanford.edu/class/cs329z/slides/lecture17.pdf)
 
 **Readings:**
 - [Shao et al. "PrivacyLens: Evaluating Privacy Norm Awareness of LMs in Action." NeurIPS D&B (2024).](https://arxiv.org/abs/2409.00138)
